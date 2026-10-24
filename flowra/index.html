@@ -1,255 +1,406 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flowra - Privacy Policy & Terms</title>
-    <style>
-        :root {
-            /* Mapped directly from your React Native theme */
-            --bg-color: #f4f5f6;
-            --card-bg: #ffffff;
-            --text-main: #0b0b0b;
-            --text-sub: #7b8088;
-            --border-color: #e8eaed;
-            
-            /* Ocean Blue Accents */
-            --accent-blue: #49cbeb;
-            --accent-soft: #98e1f7;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flowra: Privacy Policy and Terms</title>
+<meta name="description" content="Privacy Policy and Terms and Conditions for Flowra, an offline focus timer, breathing, mood and task app. No ads, no account, no data collection.">
+<meta name="theme-color" content="#141414">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%231e1e1e'/%3E%3Ccircle cx='50' cy='52' r='34' fill='%2377cdf8'/%3E%3Cpath d='M34 50q6 6 12 0M54 50q6 6 12 0M42 66q8 6 16 0' fill='none' stroke='%231e1e1e' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+  /* Tokens copied from the Flowra app theme (dark is the app default) */
+  :root {
+    --bg: #141414;
+    --card: #232323;
+    --chip: #2d2d2d;
+    --text: #ffffff;
+    --sub: #a3a9b0;
+    --border: #303030;
+    --blue: #49cbeb;
+    --soft: #98e1f7;
+    --mint: #7ff5c9;
+    --pink: #fbb0e0;
+    --coral: #f97c64;
+    --sand: #f6d98a;
+    --glow: 0.2;
+    --on-accent: #000000;
+  }
+  :root[data-theme="light"] {
+    --bg: #f4f5f6;
+    --card: #ffffff;
+    --chip: #eef0f2;
+    --text: #0b0b0b;
+    --sub: #656b73;
+    --border: #e8eaed;
+    --glow: 0.32;
+  }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-        }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* the same soft colour glow the app shows behind its face */
+  body::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 520px;
+    background:
+      radial-gradient(420px 300px at 30% 0%, var(--mint), transparent 70%),
+      radial-gradient(420px 300px at 75% 10%, var(--blue), transparent 70%);
+    opacity: var(--glow);
+    pointer-events: none;
+    z-index: 0;
+  }
+  a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  :focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 10px; }
 
-        /* App-like Header */
-        .site-header {
-            background-color: var(--card-bg);
-            border-bottom: 1px solid var(--border-color);
-            padding: 20px 0;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+  .wrap { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; padding: 0 20px; }
+  svg.logo { display: block; }
 
-        .site-header h1 {
-            margin: 0;
-            font-size: 1.8em;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
+  /* top bar */
+  .bar {
+    position: sticky; top: 0; z-index: 20;
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    border-bottom: 1px solid var(--border);
+  }
+  .bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 64px; }
+  .brand { display: flex; align-items: center; gap: 10px; color: var(--text); font-weight: 800; font-size: 20px; letter-spacing: -0.4px; }
+  .brand:hover { text-decoration: none; }
+  .brand svg { width: 36px; height: 36px; }
+  .toggle {
+    border: 1px solid var(--border); background: var(--card); color: var(--text);
+    height: 40px; padding: 0 16px; border-radius: 20px; font: inherit; font-weight: 700; font-size: 14px; cursor: pointer;
+  }
 
-        .text-accent {
-            color: var(--accent-blue);
-        }
+  /* hero */
+  .hero { text-align: center; padding: 56px 0 28px; }
+  .hero svg { width: 148px; height: 148px; margin: 0 auto 18px; filter: drop-shadow(0 12px 40px rgba(73, 203, 235, 0.35)); }
+  .hero h1 { margin: 0; font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; letter-spacing: -1.2px; font-weight: 800; }
+  .hero p { margin: 14px auto 0; max-width: 520px; color: var(--sub); font-size: 17px; }
+  .dates { display: inline-flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 20px; }
+  .pill { display: inline-block; padding: 7px 14px; border-radius: 20px; background: var(--chip); color: var(--sub); font-size: 13px; font-weight: 600; }
 
-        /* Main Content Container */
-        .container {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 50px;
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-        }
+  /* page navigation */
+  .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 8px 0 36px; }
+  .nav a {
+    padding: 11px 20px; border-radius: 24px; background: var(--card); color: var(--text);
+    border: 1px solid var(--border); font-size: 14px; font-weight: 700;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .nav a:hover { background: var(--soft); color: #000; border-color: var(--soft); text-decoration: none; }
 
-        /* Navigation Pills */
-        .nav {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 40px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid var(--border-color);
-        }
+  /* at a glance */
+  .glance { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin-bottom: 44px; }
+  .tile { border-radius: 24px; padding: 20px; color: #000; }
+  .tile b { display: block; font-size: 18px; letter-spacing: -0.2px; }
+  .tile span { display: block; margin-top: 4px; font-size: 14px; opacity: 0.78; line-height: 1.45; }
+  .t1 { background: var(--mint); } .t2 { background: var(--soft); } .t3 { background: var(--pink); }
+  .t4 { background: var(--sand); } .t5 { background: var(--blue); } .t6 { background: var(--coral); }
 
-        .nav a {
-            color: var(--text-main);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95em;
-            padding: 10px 24px;
-            border-radius: 30px;
-            background-color: var(--bg-color);
-            transition: all 0.2s ease;
-            border: 1px solid var(--border-color);
-        }
+  /* document cards */
+  section { scroll-margin-top: 84px; }
+  .doc { background: var(--card); border: 1px solid var(--border); border-radius: 32px; padding: 40px 36px; margin-bottom: 28px; }
+  .doc > h2 { margin: 0 0 6px; font-size: 30px; letter-spacing: -0.8px; line-height: 1.15; }
+  .doc > .meta { color: var(--sub); font-size: 14px; margin: 0 0 28px; }
+  h3 { margin: 34px 0 8px; font-size: 19px; letter-spacing: -0.3px; line-height: 1.3; }
+  p, li { color: var(--sub); font-size: 16px; }
+  p { margin: 0 0 14px; max-width: 70ch; }
+  ul { margin: 0 0 14px; padding-left: 22px; max-width: 70ch; }
+  li { margin-bottom: 7px; }
+  strong { color: var(--text); font-weight: 700; }
 
-        .nav a:hover {
-            background-color: var(--accent-soft);
-            border-color: var(--accent-soft);
-            color: #000;
-        }
+  .note { background: var(--chip); border-radius: 20px; padding: 16px 18px; margin: 18px 0; max-width: 70ch; }
+  .note p { margin: 0; color: var(--text); }
+  .note.warm { border-left: 5px solid var(--coral); }
+  .note.cool { border-left: 5px solid var(--mint); }
 
-        /* Typography */
-        h2, h3 {
-            color: var(--text-main);
-            margin-top: 40px;
-        }
+  /* permission rows */
+  .perms { display: grid; gap: 10px; margin: 12px 0 18px; }
+  .perm { background: var(--chip); border-radius: 20px; padding: 16px 18px; display: grid; grid-template-columns: 1fr auto; gap: 4px 14px; align-items: start; }
+  .perm b { color: var(--text); font-size: 16px; }
+  .perm p { grid-column: 1; margin: 0; font-size: 14.5px; }
+  .perm .tag { grid-row: 1; grid-column: 2; font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 12px; background: var(--mint); color: #000; white-space: nowrap; }
+  .perm .tag.opt { background: var(--soft); }
 
-        h2 {
-            font-size: 1.5em;
-            display: inline-block;
-            position: relative;
-            margin-bottom: 20px;
-        }
+  /* data safety summary */
+  .facts { display: grid; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; margin: 12px 0 18px; }
+  .facts div { background: var(--chip); display: grid; grid-template-columns: minmax(130px, 1fr) 2fr; gap: 14px; padding: 14px 18px; }
+  .facts dt { color: var(--text); font-weight: 700; font-size: 15px; }
+  .facts dd { margin: 0; color: var(--sub); font-size: 15px; }
 
-        /* Nice underline for section headers */
-        h2::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -6px;
-            width: 40px;
-            height: 4px;
-            background-color: var(--accent-blue);
-            border-radius: 2px;
-        }
+  footer { position: relative; z-index: 1; text-align: center; padding: 36px 20px 56px; color: var(--sub); font-size: 14px; }
+  footer p { margin: 0 auto 6px; }
 
-        h3 {
-            font-size: 1.15em;
-            margin-bottom: 10px;
-        }
-
-        p, li {
-            color: var(--text-sub);
-            font-size: 15px;
-            margin-bottom: 16px;
-        }
-
-        strong {
-            color: var(--text-main);
-            font-weight: 600;
-        }
-        
-        .date-badge {
-            display: inline-block;
-            background-color: var(--bg-color);
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 0.85em;
-            font-weight: 600;
-            color: var(--text-sub);
-            border: 1px solid var(--border-color);
-            margin-bottom: 20px;
-        }
-
-        .section {
-            margin-bottom: 60px;
-        }
-
-        /* Professional Footer */
-        .site-footer {
-            margin-top: 40px;
-            padding: 30px 20px;
-            text-align: center;
-            font-size: 0.9em;
-            color: var(--text-sub);
-            background-color: var(--card-bg);
-            border-top: 1px solid var(--border-color);
-        }
-
-        .site-footer a {
-            color: var(--accent-blue);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .site-footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Responsive adjustments for mobile devices */
-        @media (max-width: 768px) {
-            .container {
-                margin: 20px;
-                padding: 30px 20px;
-            }
-            .nav {
-                flex-direction: column;
-                align-items: center;
-            }
-            .nav a {
-                width: 100%;
-                text-align: center;
-                box-sizing: border-box;
-            }
-        }
-    </style>
+  @media (max-width: 600px) {
+    .doc { padding: 28px 20px; border-radius: 26px; }
+    .doc > h2 { font-size: 25px; }
+    .hero { padding-top: 40px; }
+    .facts div { grid-template-columns: 1fr; gap: 2px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+</style>
 </head>
 <body>
 
-    <!-- App-like Header -->
-    <header class="site-header">
-        <h1>Flowra<span class="text-accent">.</span> Legal</h1>
-    </header>
+<!-- Logo: defined once, reused below. To use your own PNG, replace each
+     <svg class="logo">...</svg> with <img class="logo" src="logo.png" alt="Flowra logo" width="148" height="148">. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="flowra-logo" viewBox="0 0 200 200">
+    <defs>
+      <linearGradient id="flowra-grad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#98f5c9"/>
+        <stop offset="1" stop-color="#77cdf8"/>
+      </linearGradient>
+    </defs>
+    <circle cx="100" cy="100" r="98" fill="#1e1e1e"/>
+    <circle cx="100" cy="100" r="86" fill="none" stroke="#7ff5c9" stroke-opacity="0.35" stroke-width="2"/>
+    <circle cx="100" cy="100" r="76" fill="none" stroke="#49cbeb" stroke-opacity="0.35" stroke-width="2"/>
+    <circle cx="100" cy="102" r="64" fill="url(#flowra-grad)"/>
+    <g fill="none" stroke="#1e1e1e" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M98 42 Q80 54 86 72 Q96 84 109 72 Q113 59 101 57 Q95 59 99 65"/>
+      <path d="M66 102 Q78 114 90 102"/>
+      <path d="M110 102 Q122 114 134 102"/>
+      <path d="M100 106 Q94 124 105 128"/>
+      <path d="M84 140 Q100 150 116 140"/>
+    </g>
+  </symbol>
+</svg>
 
-    <div class="container">
-        <!-- Interactive Navigation Pills -->
-        <div class="nav">
-            <a href="#privacy">Privacy Policy</a>
-            <a href="#terms">Terms & Conditions</a>
-        </div>
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Flowra, back to top">
+      <svg class="logo" aria-hidden="true"><use href="#flowra-logo"/></svg>
+      Flowra
+    </a>
+    <button class="toggle" id="themeToggle" type="button" aria-label="Switch between dark and light theme">Light mode</button>
+  </div>
+</header>
 
-        <!-- PRIVACY POLICY -->
-        <div id="privacy" class="section">
-            <h2>Privacy Policy</h2>
-            <div class="date-badge">Effective Date: September 13, 2026</div>
-            
-            <p>This privacy policy applies to the <strong>Flowra</strong> mobile application ("Application"), created and operated by Arsh ("Service Provider").</p>
+<main class="wrap" id="top">
 
-            <h3>Data Collection and Local Storage</h3>
-            <p>We value your privacy completely. <strong>Flowra does not collect, store, or transmit any personal data to external servers.</strong></p>
-            <p>All app progress, quiz scores, preferences, and user data are saved exclusively and securely on your local device storage using local persistence mechanisms (such as AsyncStorage). This information never leaves your device, and we have no access to it.</p>
+  <div class="hero">
+    <svg class="logo" role="img" aria-label="Flowra logo"><use href="#flowra-logo"/></svg>
+    <h1>Privacy Policy and Terms</h1>
+    <p>Flowra is a focus timer, breathing guide, mood journal and task planner that works fully offline. Here is exactly how it treats your information, in plain language.</p>
+    <div class="dates">
+      <span class="pill">Effective October 24, 2026</span>
+      <span class="pill">Last updated October 24, 2026</span>
+    </div>
+  </div>
 
-            <h3>Audience (Kids and Adults)</h3>
-            <p>Flowra is designed for users of all age groups, including kids and families. Because we do not collect any personal information, tracking data, or location metrics, the app is completely safe for children to enjoy quizzes on colors, vegetables, fruits, and math without privacy concerns.</p>
+  <nav class="nav" aria-label="Page sections">
+    <a href="#summary">At a glance</a>
+    <a href="#privacy">Privacy Policy</a>
+    <a href="#permissions">Permissions</a>
+    <a href="#terms">Terms and Conditions</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-            <h3>Third-Party Services</h3>
-            <p>The Application does not integrate any third-party analytics, advertising networks, or external tracking SDKs that gather your personal information.</p>
+  <section id="summary" aria-label="Summary">
+    <div class="glance">
+      <div class="tile t1"><b>No account</b><span>Open the app and start. There is nothing to sign up for.</span></div>
+      <div class="tile t2"><b>Data stays on your phone</b><span>Your sessions, moods, tasks and notes are never sent to us.</span></div>
+      <div class="tile t3"><b>No ads</b><span>No advertising, no ad networks, no sponsored content.</span></div>
+      <div class="tile t4"><b>No tracking</b><span>No analytics, no profiling, no data sold or shared.</span></div>
+      <div class="tile t5"><b>Works offline</b><span>Flowra does not need an internet connection to run.</span></div>
+      <div class="tile t6"><b>Free to use</b><span>All features are available at no cost.</span></div>
+    </div>
+  </section>
 
-            <h3>Children's Privacy</h3>
-            <p>Since no personal information is collected from any user—including children—the Application complies fully with children's privacy standards and guidelines.</p>
+  <!-- ===================== PRIVACY POLICY ===================== -->
+  <section id="privacy" class="doc">
+    <h2>Privacy Policy</h2>
+    <p class="meta">Effective October 24, 2026</p>
 
-            <h3>Contact Us</h3>
-            <p>If you have any questions or concerns regarding this Privacy Policy, you may contact us at: <br><a href="mailto:arsh.developer.contact@gmail.com" style="color: var(--accent-blue); text-decoration: none; font-weight: 600;">arsh.developer.contact@gmail.com</a></p>
-        </div>
+    <p>This Privacy Policy explains how the <strong>Flowra</strong> mobile application (the “App”) handles information. The App is created and operated by <strong>Arsh</strong> (“we”, “us”, “the Developer”). By using the App you agree to this policy.</p>
 
-        <!-- TERMS & CONDITIONS -->
-        <div id="terms" class="section">
-            <h2>Terms & Conditions</h2>
-            <div class="date-badge">Effective Date: October 24, 2026</div>
+    <div class="note cool"><p><strong>In short:</strong> Flowra does not collect, transmit, sell or share your personal information. Everything you create in the App stays in the App’s private storage on your own device.</p></div>
 
-            <p>By downloading or using the <strong>Flowra</strong> mobile application, you agree to be bound by these Terms and Conditions.</p>
+    <h3>Information stored on your device</h3>
+    <p>To work, the App saves the following on your phone only. We never receive a copy.</p>
+    <ul>
+      <li><strong>Profile:</strong> the name you enter, an optional profile photo and your personal quote.</li>
+      <li><strong>Focus and breathing sessions:</strong> dates, durations, categories and linked tasks.</li>
+      <li><strong>Tasks:</strong> titles, notes, priority, due dates, reminder settings and completion status.</li>
+      <li><strong>Mood check-ins and journal notes:</strong> the mood you choose, intensity, feelings, what shaped your day, worries and any note you write.</li>
+      <li><strong>Presets and settings:</strong> your custom focus presets, timer lengths, daily goal, theme, accent colour and haptics choice.</li>
+      <li><strong>Timer state:</strong> the status and end time of a running timer, so it can keep working while the App is closed.</li>
+    </ul>
+    <p>This information is held in the App’s local storage, which is protected by your device’s app sandbox and screen lock. It is not uploaded anywhere.</p>
 
-            <h3>Use of the Application</h3>
-            <p>The Application provides fun and educational quizzes covering topics like colors, vegetables, fruits, and math for players of all ages. You agree to use the app for personal, non-commercial entertainment and educational purposes only.</p>
+    <h3>Information we do not collect</h3>
+    <ul>
+      <li>No name, email address, phone number or account details.</li>
+      <li>No location data.</li>
+      <li>No contacts, messages, call logs or files from your device.</li>
+      <li>No device identifiers, advertising IDs, usage analytics or crash reports.</li>
+      <li>No payment information. The App is free and has no purchases.</li>
+    </ul>
 
-            <h3>Intellectual Property</h3>
-            <p>All app design elements, code structure, graphics, mascot logos, and branding belong exclusively to the Service Provider. Unauthorized copying or modification is strictly prohibited.</p>
+    <h3>How your information is used</h3>
+    <p>Your on-device information is used only to run the features you see: showing your history and statistics, calculating streaks, levels and insights, and scheduling your own reminders. All of this happens locally on your phone. No automated decisions are made about you, and nothing is used for advertising or profiling.</p>
 
-            <h3>Limitation of Liability</h3>
-            <p>The Application is provided on an "as-is" and "as-available" basis without warranties of any kind. The Service Provider shall not be held liable for any data loss resulting from device failure or clearing local storage.</p>
+    <h3>Notifications and your lock screen</h3>
+    <p>Reminders and timer alerts are created by the App on your device. They may show your task titles or timer status on your lock screen, depending on your phone’s notification settings. You can hide this in your system settings, or turn notifications off at any time.</p>
 
-            <h3>Contact Us</h3>
-            <p>For any questions regarding these Terms, you may reach out via email at: <br><a href="mailto:arsh.developer.contact@gmail.com" style="color: var(--accent-blue); text-decoration: none; font-weight: 600;">arsh.developer.contact@gmail.com</a></p>
-        </div>
+    <h3>Camera and photos</h3>
+    <p>The camera and photo picker are used only when you choose to set a profile picture. The picture you select is resized and kept inside the App on your device. It is never uploaded. You can remove it at any time in Profile.</p>
+
+    <h3>Sharing, export and import</h3>
+    <p>If you tap <strong>Export my data</strong> or <strong>Share Flowra</strong>, your phone’s standard share sheet opens and you decide where the text goes, for example a notes app or a message. We do not see or receive it. To restore a backup, you paste your own exported text into the import box in the App. Please store backups somewhere private, because they contain your journal and task entries.</p>
+
+    <h3>Third-party services</h3>
+    <p>The App does not include advertising networks, analytics tools or tracking services, and it does not send your data to any third party. It is built with open-source software libraries that run entirely on your device to provide features such as local storage, notifications, vibration and the photo picker.</p>
+    <p>If you download Flowra from Google Play, Google processes that download under its own privacy policy. That is separate from this App and outside our control.</p>
+
+    <h3>Data retention and deletion</h3>
+    <p>Your information stays on your device until you remove it. You are in full control:</p>
+    <ul>
+      <li>Delete a single mood check-in, task or preset inside the App.</li>
+      <li>Use <strong>Reset everything</strong> in Profile to erase all data stored by the App.</li>
+      <li>Uninstall the App, or clear its storage in your phone settings, to remove everything.</li>
+    </ul>
+    <p>Because we hold none of your data, there is nothing for us to delete on our side. If your phone’s backup feature is turned on, your operating system provider may back up app data to your own account under its own policies.</p>
+
+    <h3>Security</h3>
+    <p>Keeping data only on your device is our main protection, since there is no server to breach. We recommend a screen lock on your phone, and careful handling of any exported backup. No method of electronic storage is perfectly secure, so we cannot guarantee absolute security.</p>
+
+    <h3>Children’s privacy</h3>
+    <p>Flowra is a general-audience wellbeing and productivity app and is not directed at children under 13. Because the App collects no personal information from anyone, no data is gathered from children either. If you are a parent or guardian and have a concern, contact us and we will help.</p>
+
+    <h3>Your rights and choices</h3>
+    <p>Depending on where you live, laws such as the GDPR, the UK GDPR, the CCPA or India’s Digital Personal Data Protection Act may give you rights to access, correct, delete or move your data, or to object to its use. Since we do not collect or hold your personal data, these rights are fulfilled directly in the App: you can view, edit, export and delete everything yourself. We do not sell or share personal information.</p>
+
+    <h3>Changes to this policy</h3>
+    <p>We may update this Privacy Policy when the App changes, for example if a new feature needs a new permission. The effective date at the top will change, and significant changes will be described in the App’s update notes on Google Play. If we ever add a feature that collects data, we will update this policy first and ask for your consent where required.</p>
+
+    <h3>Google Play Data safety summary</h3>
+    <dl class="facts">
+      <div><dt>Data collected</dt><dd>None</dd></div>
+      <div><dt>Data shared with third parties</dt><dd>None</dd></div>
+      <div><dt>Advertising</dt><dd>None</dd></div>
+      <div><dt>Account required</dt><dd>No</dd></div>
+      <div><dt>Where your data lives</dt><dd>Only on your device</dd></div>
+      <div><dt>How to delete your data</dt><dd>Reset everything in Profile, or uninstall the App</dd></div>
+    </dl>
+  </section>
+
+  <!-- ===================== PERMISSIONS ===================== -->
+  <section id="permissions" class="doc">
+    <h2>App permissions</h2>
+    <p class="meta">What Flowra asks for, and why</p>
+
+    <p>Flowra asks only for what its features need. None of these permissions give us access to your data, because the App has no server to send it to.</p>
+
+    <div class="perms">
+      <div class="perm"><b>Notifications</b><span class="tag">Recommended</span><p>Shows your timer controls (pause, resume, stop), task reminders and the alert when a session ends.</p></div>
+      <div class="perm"><b>Alarms and reminders</b><span class="tag">Recommended</span><p>Lets reminders and the end-of-session alert arrive at the exact time, even when the App is closed.</p></div>
+      <div class="perm"><b>Background activity</b><span class="tag">Recommended</span><p>Lets your timer keep running when you switch apps or close Flowra. You allow this in your phone’s battery settings. The App only opens that settings screen, and cannot read your other apps.</p></div>
+      <div class="perm"><b>Vibration</b><span class="tag">Recommended</span><p>Gentle haptic feedback, breathing cues and a vibration when a session ends. You can turn it off in Profile.</p></div>
+      <div class="perm"><b>Run at startup</b><span class="tag">Recommended</span><p>Lets scheduled reminders continue to work after you restart your phone.</p></div>
+      <div class="perm"><b>Camera</b><span class="tag opt">Optional</span><p>Used only if you choose to take a profile photo. The App works fully without it.</p></div>
+      <div class="perm"><b>Photos</b><span class="tag opt">Optional</span><p>Used only when you pick an existing picture for your profile. You select the single image yourself.</p></div>
     </div>
 
-    <!-- Corporate Style Footer -->
-    <footer class="site-footer">
-        <p>&copy; 2026 <strong>Flowra</strong> by Arsh. All rights reserved.</p>
-        <p>Need help? Contact <a href="mailto:arsh.developer.contact@gmail.com">Support</a>.</p>
-    </footer>
+    <p>You can change or withdraw any permission at any time in your phone’s settings. If you turn one off, the related feature stops working, but the rest of the App continues to work.</p>
+  </section>
 
+  <!-- ===================== TERMS ===================== -->
+  <section id="terms" class="doc">
+    <h2>Terms and Conditions</h2>
+    <p class="meta">Effective October 24, 2026</p>
+
+    <p>These Terms and Conditions (“Terms”) are an agreement between you and <strong>Arsh</strong> (“the Developer”) for your use of the <strong>Flowra</strong> mobile application (“the App”). By downloading or using the App, you agree to these Terms. If you do not agree, please do not use the App.</p>
+
+    <h3>Use of the App</h3>
+    <p>Flowra gives you a focus timer, guided breathing, a mood journal, task and reminder tools, and personal progress statistics. We grant you a personal, non-exclusive, non-transferable, revocable licence to install and use the App on your own devices for your own personal, non-commercial use.</p>
+
+    <h3>Not medical advice</h3>
+    <div class="note warm"><p>Flowra is a productivity and wellbeing tool. It is <strong>not a medical device</strong> and does not provide medical, psychological or therapeutic advice, diagnosis or treatment. The mood tracker, insights and breathing exercises are for general self-awareness and relaxation only.</p></div>
+    <p>If you are struggling with your mental health, or feel unsafe, please speak to a qualified health professional or contact your local emergency or crisis service. Stop any breathing exercise if you feel dizzy or unwell, and check with a doctor if you have a medical condition that affects breathing.</p>
+
+    <h3>Timers, reminders and notifications</h3>
+    <p>Timers and reminders depend on your phone’s settings, battery optimisation, notification permissions and operating system. Some phones limit background activity, which can delay or block alerts. Flowra should not be relied on for anything time-critical or safety-critical, such as medication, emergencies or travel, and you should keep a second reminder for anything important.</p>
+
+    <h3>Your content and your data</h3>
+    <p>You own everything you enter into the App, including tasks, notes and journal entries. Because your data is stored only on your device, you are responsible for backing it up using the Export feature. Data can be lost if you uninstall the App, clear its storage, reset it, or if your device is lost, reset or fails. We cannot recover lost data because we do not have a copy.</p>
+
+    <h3>Acceptable use</h3>
+    <p>You agree not to copy, modify, decompile, reverse engineer, resell or distribute the App except as allowed by law, not to remove any notices from it, and not to use it for any unlawful purpose.</p>
+
+    <h3>Intellectual property</h3>
+    <p>The App’s design, code, graphics, name, logo and branding belong to the Developer and are protected by applicable intellectual property laws. Nothing in these Terms transfers ownership of them to you. Open-source libraries used in the App remain under their own licences.</p>
+
+    <h3>Free of charge, no ads</h3>
+    <p>The App is currently provided free of charge, without advertising and without in-app purchases. We may update, change or discontinue features over time. If pricing or monetisation ever changes, we will update these Terms and this Privacy Policy first.</p>
+
+    <h3>Disclaimer of warranties</h3>
+    <p>The App is provided “as is” and “as available”, without warranties of any kind, whether express or implied, including fitness for a particular purpose, accuracy, reliability or uninterrupted operation. Insights, scores, streaks and statistics are estimates based on what you enter and are for motivation only.</p>
+
+    <h3>Limitation of liability</h3>
+    <p>To the fullest extent permitted by law, the Developer is not liable for any indirect, incidental, special or consequential damages, or for loss of data, missed reminders or timers, or any decision you make based on the App. Nothing in these Terms limits liability that cannot be limited by law.</p>
+
+    <h3>Termination</h3>
+    <p>You may stop using the App at any time by uninstalling it. We may suspend or end access to the App if these Terms are breached or if we discontinue the App. Sections that by their nature should continue to apply, such as ownership, disclaimers and liability, will remain in effect.</p>
+
+    <h3>Third-party platforms</h3>
+    <p>The App is distributed through Google Play and runs on your device’s operating system. Your use of those services is subject to their own terms and policies.</p>
+
+    <h3>Changes to these Terms</h3>
+    <p>We may update these Terms from time to time. The effective date above will change, and continued use of the App after an update means you accept the revised Terms.</p>
+
+    <h3>Governing law</h3>
+    <p>These Terms are governed by the laws of India, without regard to conflict-of-law rules. This does not remove any mandatory consumer rights you have under the laws of the place where you live.</p>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact" class="doc">
+    <h2>Contact us</h2>
+    <p class="meta">Questions, feedback or privacy requests</p>
+    <p>If you have any question about this Privacy Policy or these Terms, or want to report a problem, please email the Developer:</p>
+    <p><a href="mailto:arsh.developer.contact@gmail.com">arsh.developer.contact@gmail.com</a></p>
+    <p>We aim to reply within a few working days.</p>
+  </section>
+
+</main>
+
+<footer>
+  <p>&copy; 2026 <strong>Flowra</strong> by Arsh. All rights reserved.</p>
+  <p>Offline. No ads. Free. Made for focus and calm.</p>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('themeToggle');
+    var key = 'flowra-legal-theme';
+    function apply(t) {
+      root.setAttribute('data-theme', t);
+      btn.textContent = t === 'dark' ? 'Light mode' : 'Dark mode';
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', t === 'dark' ? '#141414' : '#f4f5f6');
+    }
+    var saved = null;
+    try { saved = localStorage.getItem(key); } catch (e) {}
+    apply(saved === 'light' ? 'light' : 'dark');
+    btn.addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      apply(next);
+      try { localStorage.setItem(key, next); } catch (e) {}
+    });
+  })();
+</script>
 </body>
 </html>
