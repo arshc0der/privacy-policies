@@ -1,118 +1,244 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policies</title>
+<meta name="description" content="Privacy policies and terms for mobile apps by Arsh, including Flowra and BabyBoss.">
+<meta name="theme-color" content="#141414">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='26' fill='%2349cbeb'/%3E%3Cpath d='M50 22l22 9v17c0 15-10 25-22 30-12-5-22-15-22-30V31z' fill='none' stroke='%23000' stroke-width='6' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+  /* Same colour tokens as the Flowra app and its policy page */
+  :root {
+    --bg: #141414;
+    --card: #232323;
+    --chip: #2d2d2d;
+    --text: #ffffff;
+    --sub: #a3a9b0;
+    --border: #303030;
+    --blue: #49cbeb;
+    --soft: #98e1f7;
+    --mint: #7ff5c9;
+    --pink: #fbb0e0;
+    --sand: #f6d98a;
+    --coral: #f97c64;
+    --glow: 0.2;
+  }
+  :root[data-theme="light"] {
+    --bg: #f4f5f6;
+    --card: #ffffff;
+    --chip: #eef0f2;
+    --text: #0b0b0b;
+    --sub: #656b73;
+    --border: #e8eaed;
+    --glow: 0.32;
+  }
 
-    <title>Privacy Policies</title>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 540px;
+    background:
+      radial-gradient(420px 300px at 28% 0%, var(--mint), transparent 70%),
+      radial-gradient(420px 300px at 78% 8%, var(--blue), transparent 70%);
+    opacity: var(--glow);
+    pointer-events: none;
+  }
+  a { color: var(--blue); font-weight: 600; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  :focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 14px; }
 
-    <meta name="description"
-          content="Privacy policies for our mobile applications.">
+  .wrap { position: relative; max-width: 760px; margin: 0 auto; padding: 0 20px; width: 100%; }
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+  .top { display: flex; justify-content: flex-end; padding-top: 20px; }
+  .toggle {
+    border: 1px solid var(--border); background: var(--card); color: var(--text);
+    height: 40px; padding: 0 16px; border-radius: 20px; font: inherit; font-weight: 700; font-size: 14px; cursor: pointer;
+  }
 
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f5f7fb;
-            color: #222;
-        }
+  .hero { padding: 48px 0 36px; text-align: center; }
+  .shield {
+    width: 76px; height: 76px; margin: 0 auto 22px; border-radius: 24px;
+    background: var(--blue); display: grid; place-items: center;
+    box-shadow: 0 14px 40px rgba(73, 203, 235, 0.35);
+  }
+  .shield svg { width: 40px; height: 40px; }
+  h1 { margin: 0; font-size: clamp(2.2rem, 7vw, 3.4rem); line-height: 1.08; letter-spacing: -1.4px; font-weight: 800; }
+  .hero p { margin: 16px auto 0; max-width: 460px; color: var(--sub); font-size: 17px; }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
+  .count { margin: 0 0 14px 4px; color: var(--sub); font-size: 14px; font-weight: 600; }
 
-        .card {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
+  /* app cards */
+  .apps { display: grid; gap: 14px; }
+  .app {
+    display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 18px;
+    padding: 20px; border-radius: 28px; background: var(--card); border: 1px solid var(--border);
+    color: var(--text); text-decoration: none;
+    transition: transform 0.18s ease, border-color 0.18s ease;
+  }
+  .app:hover { transform: translateY(-3px); border-color: var(--blue); text-decoration: none; }
+  .icon {
+    width: 64px; height: 64px; border-radius: 20px; display: grid; place-items: center;
+    font-size: 28px; font-weight: 800; color: #000; overflow: hidden;
+  }
+  .icon svg { width: 100%; height: 100%; display: block; }
+  .i-pink { background: var(--pink); }
+  .i-sand { background: var(--sand); }
+  .i-mint { background: var(--mint); }
+  .i-soft { background: var(--soft); }
+  .info b { display: block; font-size: 20px; letter-spacing: -0.3px; line-height: 1.25; }
+  .info span { display: block; margin-top: 3px; color: var(--sub); font-size: 15px; font-weight: 400; line-height: 1.45; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .tag { padding: 4px 11px; border-radius: 12px; background: var(--chip); color: var(--sub); font-size: 12px; font-weight: 600; }
+  .go {
+    width: 44px; height: 44px; border-radius: 22px; background: var(--soft);
+    display: grid; place-items: center; flex-shrink: 0;
+  }
+  .go svg { width: 20px; height: 20px; }
 
-        h1 {
-            margin-top: 0;
-            font-size: 32px;
-        }
+  .help {
+    margin-top: 26px; padding: 18px 20px; border-radius: 22px; background: var(--chip);
+    color: var(--sub); font-size: 14.5px;
+  }
+  .help strong { color: var(--text); }
 
-        p {
-            line-height: 1.6;
-            color: #555;
-        }
+  footer { position: relative; margin-top: auto; text-align: center; padding: 44px 20px 40px; color: var(--sub); font-size: 14px; }
+  footer p { margin: 0 0 6px; }
 
-        .app-list {
-            margin-top: 30px;
-        }
-
-        .app {
-            display: block;
-            padding: 18px 20px;
-            margin-bottom: 12px;
-            background: #f1f4f9;
-            border-radius: 8px;
-            color: #1565c0;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .app:hover {
-            background: #e4eaf3;
-        }
-
-        footer {
-            margin-top: 35px;
-            font-size: 14px;
-            color: #777;
-        }
-    </style>
+  @media (max-width: 520px) {
+    .app { grid-template-columns: auto 1fr; padding: 18px; gap: 14px; }
+    .go { display: none; }
+    .icon { width: 56px; height: 56px; border-radius: 18px; font-size: 24px; }
+    .hero { padding-top: 32px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+</style>
 </head>
-
 <body>
 
-    <div class="container">
+<div class="wrap">
+  <div class="top">
+    <button class="toggle" id="themeToggle" type="button" aria-label="Switch between dark and light theme">Light mode</button>
+  </div>
 
-        <div class="card">
+  <header class="hero">
+    <div class="shield" aria-hidden="true">
+      <svg viewBox="0 0 100 100" fill="none"><path d="M50 14l32 13v22c0 22-14 36-32 43C32 85 18 71 18 49V27z" stroke="#000" stroke-width="8" stroke-linejoin="round"/><path d="M36 50l10 10 19-21" stroke="#000" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <h1>Privacy Policies</h1>
+    <p>Every app I build, and exactly how it treats your data. Pick an app to read its policy.</p>
+  </header>
 
-            <h1>Privacy Policies</h1>
+  <main>
+    <p class="count">2 apps</p>
 
-            <p>
-                Welcome. This page contains privacy policies for our
-                mobile applications.
-            </p>
+    <div class="apps">
 
-            <div class="app-list">
-
-                <!-- BabyBoss Privacy Policy -->
-                <a class="app" href="babyboss/">
-                    BabyBoss — Privacy Policy
-                </a>
-
-                <!-- Flowra Privacy Policy -->
-                <a class="app" href="flowra/">
-                    Flowra — Privacy Policy
-                </a>
-
-                <!--
-                Add additional apps like this:
-
-                <a class="app" href="my-app/">
-                    My App — Privacy Policy
-                </a>
-                -->
-
-            </div>
-
-            <footer>
-                © 2026. All rights reserved.
-            </footer>
-
+      <!-- Flowra -->
+      <a class="app" href="flowra/">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 200 200">
+            <defs>
+              <linearGradient id="fg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#98f5c9"/><stop offset="1" stop-color="#77cdf8"/></linearGradient>
+            </defs>
+            <rect width="200" height="200" fill="#1e1e1e"/>
+            <circle cx="100" cy="100" r="86" fill="none" stroke="#7ff5c9" stroke-opacity="0.35" stroke-width="3"/>
+            <circle cx="100" cy="102" r="64" fill="url(#fg)"/>
+            <g fill="none" stroke="#1e1e1e" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M98 42 Q80 54 86 72 Q96 84 109 72 Q113 59 101 57 Q95 59 99 65"/>
+              <path d="M66 102 Q78 114 90 102"/><path d="M110 102 Q122 114 134 102"/>
+              <path d="M100 106 Q94 124 105 128"/><path d="M84 140 Q100 150 116 140"/>
+            </g>
+          </svg>
         </div>
+        <div class="info">
+          <b>Flowra</b>
+          <span>Focus timer, breathing, mood journal and tasks. Works offline.</span>
+          <div class="tags"><span class="tag">Privacy Policy</span><span class="tag">Terms</span><span class="tag">Updated Oct 24, 2026</span></div>
+        </div>
+        <div class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></div>
+      </a>
+
+      <!-- BabyBoss -->
+      <a class="app" href="babyboss/">
+        <div class="icon i-pink" aria-hidden="true">B</div>
+        <div class="info">
+          <b>BabyBoss</b>
+          <span>Privacy policy and terms for the BabyBoss app.</span>
+          <div class="tags"><span class="tag">Privacy Policy</span></div>
+        </div>
+        <div class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></div>
+      </a>
+
+      <!--
+        ADD A NEW APP: copy this whole block, paste it above this comment, then change
+        the link, the letter, the colour class (i-pink, i-sand, i-mint or i-soft), the name
+        and the description. Also update the "2 apps" number near the top.
+
+        <a class="app" href="my-app/">
+          <div class="icon i-mint" aria-hidden="true">M</div>
+          <div class="info">
+            <b>My App</b>
+            <span>One short line about the app.</span>
+            <div class="tags"><span class="tag">Privacy Policy</span></div>
+          </div>
+          <div class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></div>
+        </a>
+
+        To use a real app icon instead of a letter, replace the letter with:
+        <img src="my-app/icon.png" alt="" width="64" height="64">
+      -->
 
     </div>
 
+    <div class="help">
+      <strong>Questions about a policy?</strong> Email <a href="mailto:arsh.developer.contact@gmail.com">arsh.developer.contact@gmail.com</a> and I will get back to you.
+    </div>
+  </main>
+</div>
+
+<footer>
+  <p>&copy; 2026 Arsh. All rights reserved.</p>
+  <p>No ads. No tracking. Your data stays yours.</p>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('themeToggle');
+    var key = 'flowra-legal-theme';
+    function apply(t) {
+      root.setAttribute('data-theme', t);
+      btn.textContent = t === 'dark' ? 'Light mode' : 'Dark mode';
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', t === 'dark' ? '#141414' : '#f4f5f6');
+    }
+    var saved = null;
+    try { saved = localStorage.getItem(key); } catch (e) {}
+    apply(saved === 'light' ? 'light' : 'dark');
+    btn.addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      apply(next);
+      try { localStorage.setItem(key, next); } catch (e) {}
+    });
+  })();
+</script>
 </body>
 </html>
